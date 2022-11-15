@@ -27,7 +27,21 @@ class TodoController extends Controller
     public function destroy($id){
         $data=todo::find($id);
         $data->delete();
-        echo "Record deleted successfully.";
+        // echo "Record deleted successfully.";
+        return redirect('/');
+    }
+
+    public function edit($id){
+        $data = todo::find($id);
+        return view('edit', ['data'=>$data]);
+    }
+
+    public function updateTodo(Request $req){
+        $todoObj = todo::find($req->id);
+        $todoObj->title = $req->todo;
+
+        $todoObj->save();
+
         return redirect('/');
     }
 }

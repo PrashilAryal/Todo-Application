@@ -18,3 +18,5 @@ Route::get('/', [TodoController::class, 'index']);
 
 Route::post('/save-todo', [TodoController::class, 'saveTodo'])->name('saveTodo');
 Route::get('delete/{id}', [TodoController::class,'destroy']);
+Route::get('edit/{id}', [TodoController::class,'edit']);
+Route::post('/edit', [TodoController::class, 'updateTodo'])->name('updateTodo');
